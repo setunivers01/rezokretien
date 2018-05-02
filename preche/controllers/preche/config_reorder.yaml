@@ -1,0 +1,4 @@
+title: Preche
+modelClass: Rezokretien\Preche\Models\Preche
+toolbar:
+    buttons: reorder_toolbar

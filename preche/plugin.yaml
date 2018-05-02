@@ -1,0 +1,24 @@
+plugin:
+    name: 'rezokretien.preche::lang.plugin.name'
+    description: 'rezokretien.preche::lang.plugin.description'
+    author: rezokretien
+    icon: oc-icon-star
+    homepage: ''
+permissions:
+    manage_preche:
+        tab: 'rezokretien.preche::lang.plugin.name'
+        label: 'rezokretien.preche::lang.plugin.name'
+navigation:
+    preche:
+        label: preche
+        url: rezokretien/preche/preche
+        icon: icon-star
+        permissions:
+            - manage_preche
+        sideMenu:
+            preche:
+                label: preche
+                url: rezokretien/preche/preche
+                icon: icon-tint
+                permissions:
+                    - manage_preche

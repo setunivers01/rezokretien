@@ -1,0 +1,10 @@
+name: Preche
+form: $/rezokretien/preche/models/preche/fields.yaml
+modelClass: Rezokretien\Preche\Models\Preche
+defaultRedirect: rezokretien/preche/preche
+create:
+    redirect: 'rezokretien/preche/preche/update/:id'
+    redirectClose: rezokretien/preche/preche
+update:
+    redirect: rezokretien/preche/preche
+    redirectClose: rezokretien/preche/preche

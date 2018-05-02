@@ -1,0 +1,40 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        required: 1
+        type: text
+    auteur:
+        label: auteur
+        span: auto
+        required: 1
+        type: text
+    date:
+        label: Date
+        mode: datetime
+        span: auto
+        type: datepicker
+    duration:
+        label: Duration
+        span: auto
+        type: text
+    auteur_preche:
+        label: Auteur_preche
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        required: 1
+        type: fileupload
+    Audio_preche:
+        label: Audio_Preche
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        required: 1
+        type: fileupload
