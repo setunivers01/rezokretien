@@ -1,0 +1,4 @@
+title: Predication
+modelClass: Rezokretien\Predication\Models\Predication
+toolbar:
+    buttons: reorder_toolbar

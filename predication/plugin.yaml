@@ -1,0 +1,24 @@
+plugin:
+    name: 'rezokretien.predication::lang.plugin.name'
+    description: 'rezokretien.predication::lang.plugin.description'
+    author: rezokretien
+    icon: oc-icon-book
+    homepage: ''
+permissions:
+    manage_predication:
+        tab: 'rezokretien.predication::lang.plugin.name'
+        label: 'rezokretien.predication::lang.plugin.name'
+navigation:
+    predication:
+        label: Predication
+        url: rezokretien/predication/predication
+        icon: icon-book
+        permissions:
+            - manage_predication
+        sideMenu:
+            items:
+                label: items
+                url: rezokretien/predication/predication
+                icon: icon-smile-o
+                permissions:
+                    - manage_predication

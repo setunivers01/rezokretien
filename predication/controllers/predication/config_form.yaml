@@ -1,0 +1,10 @@
+name: Predication
+form: $/rezokretien/predication/models/predication/fields.yaml
+modelClass: Rezokretien\Predication\Models\Predication
+defaultRedirect: rezokretien/predication/predication
+create:
+    redirect: 'rezokretien/predication/predication/update/:id'
+    redirectClose: rezokretien/predication/predication
+update:
+    redirect: rezokretien/predication/predication
+    redirectClose: rezokretien/predication/predication
