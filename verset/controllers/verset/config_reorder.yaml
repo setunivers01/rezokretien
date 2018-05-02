@@ -1,0 +1,4 @@
+title: Verset
+modelClass: Rezokretien\Verset\Models\Verset
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,24 @@
+plugin:
+    name: 'rezokretien.verset::lang.plugin.name'
+    description: 'rezokretien.verset::lang.plugin.description'
+    author: rezokretien
+    icon: oc-icon-file-archive-o
+    homepage: ''
+permissions:
+    manage_verset:
+        tab: 'rezokretien.verset::lang.plugin.name'
+        label: 'rezokretien.verset::lang.plugin.name'
+navigation:
+    verset:
+        label: 'Verset De La Semaine'
+        url: rezokretien/verset/verset
+        icon: icon-file
+        permissions:
+            - manage_verset
+        sideMenu:
+            items:
+                label: items
+                url: rezokretien/verset/verset
+                icon: icon-sitemap
+                permissions:
+                    - manage_verset

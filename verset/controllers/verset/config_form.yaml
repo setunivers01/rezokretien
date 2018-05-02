@@ -1,0 +1,10 @@
+name: Verset
+form: $/rezokretien/verset/models/verset/fields.yaml
+modelClass: Rezokretien\Verset\Models\Verset
+defaultRedirect: rezokretien/verset/verset
+create:
+    redirect: 'rezokretien/verset/verset/update/:id'
+    redirectClose: rezokretien/verset/verset
+update:
+    redirect: rezokretien/verset/verset
+    redirectClose: rezokretien/verset/verset

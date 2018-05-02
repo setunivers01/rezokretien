@@ -1,0 +1,16 @@
+columns:
+    titre_verset:
+        label: titre
+        type: text
+        searchable: true
+        sortable: true
+    passage:
+        label: passage
+        type: text
+        searchable: true
+        sortable: true
+    verset:
+        label: verset
+        type: text
+        searchable: true
+        sortable: true
