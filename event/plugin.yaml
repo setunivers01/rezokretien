@@ -1,0 +1,22 @@
+plugin:
+    name: 'rezokretien.event::lang.plugin.name'
+    description: 'rezokretien.event::lang.plugin.description'
+    author: rezokretien
+    icon: oc-icon-calendar
+    homepage: ''
+permissions:
+    manage_event:
+        tab: 'rezokretien.event::lang.plugin.name'
+        label: 'rezokretien.event::lang.plugin.name'
+navigation:
+    Event:
+        label: Event
+        url: rezokretien/event/event
+        icon: icon-calendar-o
+        permissions:
+            - manage_event
+        sideMenu:
+            item:
+                label: item
+                url: rezokretien/event/event
+                icon: icon-bookmark-o

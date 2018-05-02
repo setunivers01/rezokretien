@@ -1,0 +1,10 @@
+name: Event
+form: $/rezokretien/event/models/event/fields.yaml
+modelClass: Rezokretien\Event\Models\Event
+defaultRedirect: rezokretien/event/event
+create:
+    redirect: 'rezokretien/event/event/update/:id'
+    redirectClose: rezokretien/event/event
+update:
+    redirect: rezokretien/event/event
+    redirectClose: rezokretien/event/event

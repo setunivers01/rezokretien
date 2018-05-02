@@ -1,0 +1,4 @@
+title: Event
+modelClass: Rezokretien\Event\Models\Event
+toolbar:
+    buttons: reorder_toolbar

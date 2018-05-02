@@ -1,0 +1,53 @@
+fields:
+    title:
+        label: Title
+        span: auto
+        placeholder: ''
+        cssClass: ''
+        required: 1
+        type: text
+    date:
+        label: Date
+        mode: datetime
+        span: auto
+        required: 1
+        type: datepicker
+    venue:
+        label: Venue
+        span: auto
+        required: 1
+        type: text
+    vente:
+        label: Vente
+        span: auto
+        required: 1
+        type: text
+    admission:
+        label: Admission
+        span: auto
+        required: 1
+        type: text
+    content:
+        label: Content
+        size: ''
+        span: auto
+        required: 1
+        type: richeditor
+    image_event:
+        label: 'Image Event'
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        required: 1
+        type: fileupload
+    validate:
+        label: 'Is This Event Validated ?'
+        options:
+            'null': 'null'
+            'yes': 'yes'
+            'no': 'no'
+        span: auto
+        type: dropdown
