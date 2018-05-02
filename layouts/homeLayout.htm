@@ -1,0 +1,65 @@
+description = "layout"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>rezokretien- {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="OctoberCMS">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="generator" content="OctoberCMS">
+        <!DOCTYPE html>
+<html lang="en-US">
+    <!--<![endif]-->
+
+ 
+        <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+        <link href="{{'assets/css/main.css'|theme }}" rel="stylesheet" type="text/css">
+
+        {% styles %}
+    </head>
+    <body>
+
+
+    <div id="wrapper">
+
+        <!-- Header -->
+
+            {% partial 'site/header' %}
+
+            {% page %}
+
+            {% partial 'site/footer' %}
+
+</div>
+        <!-- Scripts -->
+        <script src="{{ [
+         
+            'assets/js/jquery.min.js',
+           'assets/js/bootstrap.min.js',
+          'assets/js/jquery.isotope.min.js',
+          'assets/js/jquery.prettyPhoto.js',
+           'assets/js/easing.js',
+          'assets/js/jquery.ui.totop.js',
+    'assets/js/ender.js',
+    'assets/js/responsiveslides.min.js',
+    'assets/js/owl.carousel.js',
+    'assets/js/jquery.fitvids.js',
+    'assets/js/jquery.plugin.js',
+    'assets/js/jquery.countdown.js',
+    'assets/js/countdown-custom.js',
+    'assets/js/wow.min.js',
+    'assets/js/custom.js'
+    
+        
+    ]|theme }}"></script>
+
+    
+
+        {% framework extras %}
+        {% scripts %}
+
+    </body>
+</html>

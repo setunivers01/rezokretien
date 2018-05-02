@@ -1,0 +1,52 @@
+description = "the music layout"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>rezokretien- {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="OctoberCMS">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="generator" content="OctoberCMS">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+                <link href="{{'assets/css/site.css'|theme }}" rel="stylesheet" type="text/css">
+        <link href="{{'assets/css/main.css'|theme }}" rel="stylesheet" type="text/css">
+        
+        {% styles %}
+        
+        
+                <!-- Scripts -->
+     <script src="{{ [        
+    'assets/js/jquery.min.js',
+    'assets/jplayer/jplayer/jquery.jplayer.js',
+	'assets/jplayer/add-on/jplayer.playlist.js',
+	'assets/js/wow.min.js',
+    'assets/js/swiper.min.js'
+    ]|theme }}"></script>
+    
+    
+    </head>
+    <body>
+    
+
+    <div id="wrapper">
+
+        <!-- Header -->
+       
+            {% partial 'site/header' %}
+       
+            {% page %}
+       
+            {% partial 'site/footer' %}
+
+</div>
+
+  
+    
+        {% framework extras %}
+        {% scripts %}
+
+    </body>
+</html>
