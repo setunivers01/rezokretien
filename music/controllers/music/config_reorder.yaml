@@ -1,0 +1,4 @@
+title: Music
+modelClass: Rezokretien\Music\Models\Music
+toolbar:
+    buttons: reorder_toolbar

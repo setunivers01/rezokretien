@@ -1,0 +1,16 @@
+columns:
+    title:
+        label: Title
+        type: text
+        searchable: true
+        sortable: true
+    artist:
+        label: Artist
+        type: text
+        searchable: true
+        sortable: true
+    genre:
+        label: Genre
+        type: text
+        searchable: true
+        sortable: true

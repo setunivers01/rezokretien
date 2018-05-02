@@ -1,0 +1,10 @@
+name: Music
+form: $/rezokretien/music/models/music/fields.yaml
+modelClass: Rezokretien\Music\Models\Music
+defaultRedirect: rezokretien/music/music
+create:
+    redirect: 'rezokretien/music/music/update/:id'
+    redirectClose: rezokretien/music/music
+update:
+    redirect: rezokretien/music/music
+    redirectClose: rezokretien/music/music

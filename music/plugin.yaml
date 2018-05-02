@@ -1,0 +1,24 @@
+plugin:
+    name: 'rezokretien.music::lang.plugin.name'
+    description: 'rezokretien.music::lang.plugin.description'
+    author: rezokretien
+    icon: oc-icon-music
+    homepage: ''
+permissions:
+    manage_music:
+        tab: 'rezokretien.music::lang.plugin.name'
+        label: 'rezokretien.music::lang.plugin.name'
+navigation:
+    music:
+        label: Music
+        url: rezokretien/music/music
+        icon: icon-music
+        permissions:
+            - manage_music
+        sideMenu:
+            item:
+                label: item
+                url: rezokretien/music/music
+                icon: icon-book
+                permissions:
+                    - manage_music
