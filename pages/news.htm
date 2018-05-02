@@ -1,0 +1,98 @@
+title = "news"
+url = "/news"
+layout = "Base"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "categories_info"
+postPage = "news_info"
+==
+<section id="subheader" data-speed="2" data-type="background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>News</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="clearfix"></div>
+
+        <!-- content begin -->
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                <div class="col-md-8">
+                        <ul class="blog-list">
+                           
+                            {% set posts = blogPosts.posts %}
+                             {% for post in posts %}
+                              <li>
+
+<div class="info">
+                                    <div class="date-box">
+                                        <span class="day">{{ post.date|date("d") }}</span>
+                                        <span class="month">{{ post.date|date("M") }}</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="preview">
+                                {% for img in post.featured_images %}
+                                    <img src="{{ img.path }}" alt="" />
+                                    {% endfor %}
+                                    <a href={{post.url}}>
+                                        <h3 class="blog-title">{{ post.title }}</h3>
+                                    </a>
+                                    <p class="excerpt">{{ post.summary|raw }}</p>
+                                </div>
+
+   
+       <a href="{{ post.url }}">
+
+                {% if post.categories.count %} in {% endif %}
+                {% for category in post.categories %}
+                    <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                on {{ post.published_at|date('M d, Y') }}
+            </p>
+
+           </li>
+    {% else %}
+        <li class="no-data">{{ noPostsMessage }}
+    {% endfor %}
+</ul>
+
+{% if posts.lastPage > 1 %}
+    <ul class="pagination">
+        {% if posts.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..posts.lastPage %}
+            <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if posts.lastPage > posts.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}
+                           
+                            </div>
+                
+                
+                
+                
+                
+                
+                
+                </div>
+                </div>
+                </div>

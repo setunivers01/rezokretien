@@ -1,0 +1,82 @@
+title = "event"
+url = "/event"
+layout = "Base"
+is_hidden = 0
+==
+<?php
+function onStart(){
+    $this['event'] = Rezokretien\Event\Models\Event::select('*')->paginate(6);
+}
+?>
+==
+<section id="subheader" data-speed="2" data-type="background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Events</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <div class="clearfix"></div>
+
+         <div id="content">
+
+            <div class="container">
+                <div class="row">
+
+       {% for e in event %}
+
+
+         <div class="col-md-6 event-item">
+                        <div class="inner">
+                            <div class="left-col">
+                            <div class="event_con">
+                            <a href="{{ 'event_info'|page({title: e.title})  }}">
+                                <img src="{{ e.image_event.path }}" class="img-responsive" alt="">
+                                </a>
+                                </div>
+                            </div>
+                            <div class="right-col">
+                                <span class="date">{{ e.date|date("d") }}</span>
+                                <span class="month">{{ e.date|date("M") }}</span>
+                                <span class="time">{{ e.date|date("h:i a") }}</span>
+                            </div>
+                        </div>
+                        <div class="desc">
+                            <a href="{{ 'event_info'|page({title: e.title})  }}">
+                                <h3>{{ e.title  }}</h3>
+                            </a>
+                            <span class="text">{{ e.content|raw }}
+                            </span>
+                        </div>
+                    </div>
+
+       {% endfor %}
+
+
+       </div>
+       </div>
+       </div>
+     </section>
+
+     <script>
+          $(function () {
+              $.getScript("https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.1.0/jquery.countdown.min.js",function () {
+                  var events = $('#upcomingEvent-clock');
+                  var nextEvent = new Date('{{ first.date|date("Y/m/d H:i:s") }}');
+                  var clock = $('#clock');
+                  events.countdown(nextEvent, function (event) {
+                      clock = $(this).html(event.strftime(''
+                              + '<div class="countdown"><span class="count">%d</span><span class="unit">days</span></div>'
+                              + '<div class="countdown"><span class="count">%H</span><span class="unit">hrs </span></div>'
+                              + '<div class="countdown"><span class="count">%M</span><span class="unit">min </span></div>'
+                              + '<div class="countdown"><span class="count">%S</span><span class="unit"> sec </span></div>'));
+                      $('.upcoming-event').css("background-image", "url({{'assets/img/slider/bg-01.png'| theme}})");
+                  })
+              });
+          });
+      </script>
+
+      background-image: url('{{ "assets/images/under_construction.png|theme" }}');

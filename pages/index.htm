@@ -1,0 +1,101 @@
+title = "index"
+url = "/"
+layout = "homeLayout"
+is_hidden = 0
+==
+
+
+<!-- section begin -->
+ <img src="{{ 'assets/img/slider/bg-1.jpg'|theme }}"/>
+<br/>
+</br/>
+
+
+
+<section id="section-text">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-8 col-md-offset-2 text-center wow fadeInUp">
+                      <h2>Latest News</h2>
+                      <div class="divider-double"></div>
+                  </div>
+
+       { % for news in news %}
+                  <div class="col-md-4 wow fadeInRight" data-wow-delay=".5s">
+                    {% for e in event %}
+                     <div class="inner">
+                                         <div class="left-col">
+                                         <div class="event_con">
+                                         <a href="{{ 'event_info'|page({title: e.title})  }}">
+                                             <img src="{{ e.image_event.path }}" class="img-responsive" alt="">
+                                             </a>
+                                             </div>
+                                         </div>
+                                         <div class="right-col">
+                                             <span class="date">{{ e.date|date("d") }}</span>
+                                             <span class="month">{{ e.date|date("M") }}</span>
+                                             <span class="time">{{ e.date|date("h:i a") }}</span>
+                                         </div>
+                                     </div>
+                                     <div class="desc">
+                                         <a href="{{ 'event_info'|page({title: e.title})  }}">
+                                             <h3>{{ e.title  }}</h3>
+                                         </a>
+                                         <span class="text">{{ e.content|raw }}
+                                         </span>
+                                     </div>
+                                 </div>
+
+                    {% endfor %}
+                    <img src="{{ 'assets/img/genre/delly.jpg'|theme }}"/>
+                      <h3>Delly Benson-Haiti En Louange</h3>
+                      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.
+        <br>
+                      <br>
+                      <a href="#" class="st-btn">Read More</a>
+                  </div>
+                  <div class="col-md-4 wow fadeInRight" data-wow-delay=".75s">
+                      <img src="img/misc/pic-2.jpg" class="img-responsive" alt="">
+                      <h3>Eglise Sur Le Roche</h3>
+                      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.
+        <br>
+                      <br>
+                      <a href="#" class="st-btn">Read More</a>
+                  </div>
+                  <div class="col-md-4 wow fadeInRight" data-wow-delay="1s">
+                      <img src="img/misc/pic-3.jpg" class="img-responsive" alt="">
+                      <h3>Festi Glory and Praise</h3>
+                      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.
+        <br>
+                      <br>
+                      <a href="#" class="st-btn">Read More</a>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- section close -->
+
+      <section id="section-text-2" class="no-padding-bottom">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-md-6 wow fadeInLeft" data-wow-delay=".5s">
+                           <h1>Take Me To Church</h1>
+                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+                           <p>
+                               Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                           </p>
+
+                           <p class="wow fadeIn" data-wow-delay='1.5s'>
+
+                           </p>
+
+                       </div>
+
+                       <div class="col-md-6 wow fadeInUp">
+                           <img src="{{'assets/img/misc/pic-4.png' |theme}}"/>
+                       </div>
+                   </div>
+               </div>
+           </section>
+           <!-- section close -->

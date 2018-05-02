@@ -1,0 +1,209 @@
+title = "genre"
+url = "/music/:genre"
+layout = "musicLayout"
+is_hidden = 0
+
+[builderList]
+modelClass = "Rezokretien\Music\Models\Music"
+scope = "-"
+scopeValue = "{{ :id }}"
+displayColumn = "genre"
+noRecordsMessage = "No records found"
+detailsPage = "-"
+detailsUrlParameter = "id"
+pageNumber = "{{ :page }}"
+==
+<section id="subheader" data-speed="2" data-type="background">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h1>Music</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+	<!-- New Releases -->
+	<div id="new-releases" class="new-releases container">
+		<div class="row">
+
+			<div class="col-md-8 releases">
+				<h4>Music</h4>
+				<!-- Jplayer Home -->
+				<div id="jp_container_N" class="jplayer-home">
+					<div class="jp-type-playlist">
+
+						<div id="jquery_jplayer_N" class="jp-jplayer"></div><!-- .jp-layer -->
+
+						<div class="jp-gui">
+							<div id="nowPlaying"></div><!-- #nowPlaying -->
+
+							<div class="jp-interface">
+								<div class="jp-progress">
+									<div class="jp-seek-bar">
+										<div class="jp-play-bar"></div>
+									</div>
+								</div><!-- .jp-progress -->
+
+								<div class="time left">
+									<span class="jp-current-time" role="timer" aria-label="time">&nbsp;</span>
+								</div>
+								<div class="time right clearfix">
+									<span class="jp-duration" role="timer" aria-label="duration">&nbsp;</span>
+								</div>
+
+								<div class="jp-controls-holder">
+									<div class="jp-controls">
+										<button class="jp-previous" tabindex="0"><i class="flaticon-multimediaoption147"></i></button>
+										<button class="jp-play" tabindex="0"><i class="flaticon-playbutton22"></i></button>
+										<button class="jp-stop" tabindex="0"><i class="flaticon-geometry60"></i></button>
+										<button class="jp-next" tabindex="0"><i class="flaticon-multimediaoption145"></i></button>
+									</div><!-- .jp-controls -->
+
+									<div class="jp-toggles">
+										<button class="jp-repeat" tabindex="0"><i class="flaticon-round72"></i></button>
+										<button class="jp-shuffle" tabindex="0"><i class="flaticon-random9"></i></button>
+									</div><!-- .jp-toggles -->
+								</div><!-- .jp-controls-holder -->
+
+								<!-- <div class="jp-details">
+									<div class="jp-title" aria-label="title">&nbsp;</div>
+								</div> -->
+							</div><!-- .jp-interface -->
+						</div><!-- .jp-gui -->
+
+						<div class="jp-playlist">
+							<ul>
+								<!-- The method Playlist.displayPlaylist() uses this unordered list -->
+								<li>&nbsp;</li>
+							</ul>
+						</div><!-- .jp-playlist -->
+
+						<div class="jp-no-solution">
+							<span>Update Required</span>
+							To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+						</div><!-- .jp-no-solution -->
+					</div><!-- .jp-type-playlist -->
+				</div><!-- .jp-container_N -->
+			</div>
+
+			<div class="col-md-4 videos">
+				<h4>Our partner</h4>
+<div id="lumiere">
+
+<img src=" http://via.placeholder.com/400x200" />
+</div>
+
+
+<div id="voix">
+    <img src=" http://via.placeholder.com/400x200" />
+</div>
+<div id="esperance">
+  <img src=" http://via.placeholder.com/400x200" />
+</div>
+<div id="Soleil">
+  <img src=" http://via.placeholder.com/400x200" />
+</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<script>
+
+
+
+  $(document).ready(function(){
+        // ========= jPlayer config 1 ==========
+        // Home player, Track player, Single post top player
+        var myPlaylist = new jPlayerPlaylist({
+            jPlayer: "#jquery_jplayer_N",
+            cssSelectorAncestor: "#jp_container_N"
+
+        }, [
+                {% for record in records %}
+
+           {% if this.param.genre == record.genre %}
+
+
+
+            {
+                artist: " {{ record.title }}", // the artist name
+                title:  "{{ record.artist }}", // track title
+                mp3:" {{ record.music.path }}",
+                poster: " {{ record.cover.path }}",// poster image path
+                duration: " {{ record.duration }}" // duration time in playlist
+            },
+            {%endif%}
+            {% endfor %}
+
+
+        ],
+        {
+            swfPath: "assets/jplayer/jplayer",
+            supplied: "oga, mp3",
+            wmode: "window",
+            useStateClassSkin: true,
+            autoBlur: false,
+            smoothPlayBar: true,
+            keyEnabled: true,
+            size: {width: "80px", height: "80px"}
+        }
+            );
+
+        // Show The Current Track !!
+        $("#jquery_jplayer_W").on($.jPlayer.event.ready, function (event) {
+            var current = myPlaylist_2.current;
+            var playlist = myPlaylist_2.playlist;
+            $.each(playlist, function (index, obj) {
+                if (index == current) {
+                    $("#nowPlayingSidebar").html("<span class='artist-name'>" + obj.artist + "</span>" + "<br>" + "<span class='track-name'>" + obj.title + "</span>");
+                }
+            });
+        });
+        $("#jquery_jplayer_W").on($.jPlayer.event.play, function (event) {
+            var current = myPlaylist_2.current;
+            var playlist = myPlaylist_2.playlist;
+            $.each(playlist, function (index, obj) {
+                if (index == current) {
+                    $("#nowPlayingSidebar").html("<span class='artist-name'>" + obj.artist + "</span>" + "<br>" + "<span class='track-name'>" + obj.title + "</span>");
+                }
+            });
+        });
+    });
+
+
+
+</script>
+
+
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}

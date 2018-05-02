@@ -1,0 +1,74 @@
+title = "event_info"
+url = "/event/:title"
+layout = "Base"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Rezokretien\Event\Models\Event"
+identifierValue = "{{ :title }}"
+modelKeyColumn = "title"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+<!-- subheader begin -->
+        <section id="subheader" data-speed="2" data-type="background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Events</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- subheader close -->
+
+        <div class="clearfix"></div>
+
+        <div id="content">
+
+            <div class="container event-single">
+                <div class="row">
+
+
+{% if record %}
+<h1 class="col-md-12">{{ record.title }}</h1>
+
+<div class="col-md-8">
+<div class="details_img">
+  <div class="slide-box">
+  <img  src="{{ record.image_event.path }}" class="img-event " class=" slide lazyload" alt="">
+</div>
+</div>
+						<p>{{ record.content|raw }}</p>
+					</div>
+
+
+					<div class="col-md-4">
+						<div class="event-details">
+							<h3>Event Details</h3>
+							<ul>
+								<li><i class="fa fa-calendar"></i>{{ record.date|date("m-d-Y") }}</li>
+								<li><i class="fa fa-clock-o"></i>{{ record.date|date("h:i a") }}</li>
+								<li><i class="fa fa-map-marker"></i>{{ record.venue }}</li>
+							</ul>
+
+							<div class="event-map">
+
+							</div>
+
+						</div>
+					</div>
+
+{% else %}
+    {{ notFoundMessage }}
+{% endif %}
+
+
+
+</div>
+</div>
+</div>

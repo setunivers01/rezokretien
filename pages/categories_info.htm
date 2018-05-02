@@ -1,0 +1,68 @@
+title = "categories_info"
+url = "/news/categories/:slug"
+layout = "Base"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "{{ :slug }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "categories"
+postPage = "news"
+==
+{% set posts = blogPosts.posts %}
+    {% for post in posts %}
+ {% if post.categories.count %}  {% endif %}
+                {% for category in post.categories %}
+<section id="subheader" data-speed="2" data-type="background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{{ category.name }}</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+<ul class="post-list">
+
+        <li>
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+
+            <p class="info">
+                Posted
+               
+                   in <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                on {{ post.published_at|date('M d, Y') }}
+            </p>
+
+            <p class="excerpt">{{ post.summary|raw }}</p>
+        </li>
+    {% else %}
+        <li class="no-data">{{ noPostsMessage }}</li>
+    {% endfor %}
+</ul>
+
+{% if posts.lastPage > 1 %}
+    <ul class="pagination">
+        {% if posts.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..posts.lastPage %}
+            <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if posts.lastPage > posts.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}

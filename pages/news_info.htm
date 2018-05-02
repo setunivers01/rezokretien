@@ -1,0 +1,179 @@
+title = "news_info"
+url = "/news/:slug"
+layout = "Base"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = 404
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "categories_info"
+==
+<?php
+function onStart(){
+    $this['verset'] = Rezokretien\Verset\Models\Verset::select('*')->paginate(6);
+}
+?>
+==
+
+
+{% set post = blogPost.post %}
+
+<section id="subheader" data-speed="2" data-type="background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>{{ post.title }}</h1>
+                    </div>
+                </div>
+            </div>
+</section>
+
+        <div class="clearfix"></div>
+
+
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="blog-read">
+                            <div>
+
+<div class="info">
+
+                                    <div class="date-box">
+                                        <span class="day">{{  e.date|date("d")  }}</span>
+                                        <span class="month">{{  e.date|date("M")  }}</span>
+                                    </div>
+                                </div>
+
+                                 <div class="preview">
+                                    {% if post.featured_images.count %}
+    <div class="featured-images text-center">
+        {% for image in post.featured_images %}
+            <p>
+                <img
+                    data-src="{{ image.filename }}"
+                    src="{{ image.path }}"
+                    alt="{{ image.description }}"
+                    style="max-width: 100%" />
+            </p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+                                    <h3 class="blog-title">Lorem ipsum dolor sit amet</h3>
+                                    <div class="content">{{ post.content_html|raw }}</div>
+
+                                </div>
+                                {% if post.categories.count %}
+                                <div class="meta-info">in
+
+        {% for category in post.categories %}
+                              <a href="{{ category.url }}">{{ category.name }}</a>,
+                            {% if not loop.last %}, {% endif %}
+        {% endfor %}
+    {% endif %}
+                                 on {{ post.published_at|date('M d, Y') }} </div>
+                            </div>
+                        </div>
+
+                                </div>
+
+                    <div id="sidebar" class="col-md-4">
+                       <div class="widget latest_news">
+                           <h3>Latest News</h3>
+                           <ul class="bloglist-small">
+                               <li>
+                                   <div class="date-box">
+                                       <span class="day">28</span>
+                                       <span class="month">SEP</span>
+                                   </div>
+                                   <div class="txt">
+                                       <h5><a href="css/index.html#">Lorem ipsum sit amet</a></h5>
+                                       <div>
+                                           <div>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque </div>
+                                       </div>
+                                   </div>
+                               </li>
+                           </ul>
+                       </div>
+
+
+
+                       <div class="widget widget_tags">
+                   <h3><span>Tags</span></h3>
+
+                     {% if blogCategories.categories %}
+    <ul class="category-list">
+
+
+  {% for e in blogCategories.categories %}
+  <li><a href="{{e.url}}">{{e.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+ </div>
+
+ <h3>Verset De La Semaine</h3>
+{% for verset in verset %}
+
+<div class="container">
+  <div class="row">
+
+    <div id="sidebar" class="col-md-4">
+       <div class="widget latest_news">
+
+           <ul class="bloglist-small">
+               <li>
+
+                   <div class="date-box">
+                       <span class="day">{{verset.date_verset|date("d")}}</span>
+                       <span class="month">{{verset.date_verset|date("M")}}</span>
+                   </div>
+                   <div class="txt">
+                          <h3>{{ verset.titre_verset }}</h3>
+                       <div>
+                           <div class="text">{{ verset.passage }}</span></h4> </div>
+     <span class="text">{{ verset.verset|raw}}</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                 </div>
+               </div>
+           </li>
+       </ul>
+   </div>
+ </div>
+</div>
+
+
+
+</div>
+ </div>
+ {% endfor %}
+
+
+
+
+
+</div>
+</div>
+</div>

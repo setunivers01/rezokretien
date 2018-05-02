@@ -1,0 +1,64 @@
+title = "gallery"
+url = "/gallery"
+layout = "Base"
+is_hidden = 0
+
+[isogallery]
+defaultLayout = 1
+defaultJs = 1
+stripSource = 1
+isotopeSource = 1
+amount = 0
+==
+<section id="subheader" data-speed="2" data-type="background">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h1>Gallery</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="r59-isogallery" class="photo-component">
+    <div class="photo-navigation text-center">
+        <ul>
+            <li class="btn btn-success iso-nav-btn active" data-category="*">All</li>
+            {% for category in categories %}
+            <li class="btn btn-success iso-nav-btn" data-category=".{{category.slug}}">{{category.title}}</li>
+            {%endfor%}
+        </ul>
+    </div>
+    <div class="photos-container container-fluid">
+        {% for gallery in galleries %}
+            <div class="photo col-md-3 col-sm-4 col-xs-6 {% for category in gallery.categories %}{{category.slug}} {%endfor%}" style="background-image: url({{gallery.photos.0.path}}); background-size: cover;">
+                <div class="overlay text-center">
+                    <a href="{{gallery.photos.0.path}}" class="strip" data-strip-group="photos-{{loop.index}}"><i class="ti-search"></i></a>
+                  
+                    <p>{{ gallery.title }}</p>
+                    <span>{{ gallery.category.title }}</span>
+                    <div class="hidden">
+                        {% for photo in gallery.photos %}
+                            {%if loop.index != 1%}
+                            <a href="{{photo.path}}" class="strip" data-strip-group="photos-{{loop.parent.loop.index}}"data-strip-group-options="side: 'top'" data-strip-caption="{{photo.description}}"></a>
+                            {%endif%}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
